@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538317398815.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "944F210",
+    "lastKnownWriteTime" : 1538323656,
+    "last_content_update" : 1538323656143,
+    "path" : "~/Documents/Data Science Projects/R/ForestFire/ForestFire/ForestFire.R",
+    "project_path" : "ForestFire.R",
+    "properties" : {
+        "cursorPosition" : "10,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

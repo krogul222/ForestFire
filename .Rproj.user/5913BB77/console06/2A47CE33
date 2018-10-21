@@ -1,0 +1,1175 @@
+
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 43.7 </td>
+   <td style="text-align:right;"> 686.9 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 14.6 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 91.7 </td>
+   <td style="text-align:right;"> 33.3 </td>
+   <td style="text-align:right;"> 77.5 </td>
+   <td style="text-align:right;"> 9.0 </td>
+   <td style="text-align:right;"> 8.3 </td>
+   <td style="text-align:right;"> 97 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 89.3 </td>
+   <td style="text-align:right;"> 51.3 </td>
+   <td style="text-align:right;"> 102.2 </td>
+   <td style="text-align:right;"> 9.6 </td>
+   <td style="text-align:right;"> 11.4 </td>
+   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> 1.8 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 92.3 </td>
+   <td style="text-align:right;"> 85.3 </td>
+   <td style="text-align:right;"> 488.0 </td>
+   <td style="text-align:right;"> 14.7 </td>
+   <td style="text-align:right;"> 22.2 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 5.4 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+> 
+> # double check if any missing values present
+> sapply(fire_data, function(x) sum(is.na(x)))
+    X     Y month   day  FFMC   DMC    DC   ISI  temp    RH  wind  rain  area 
+    0     0     0     0     0     0     0     0     0     0     0     0     0 
+> 
+> #Data summary
+> summary(fire_data)
+       X               Y           month             day             FFMC      
+ Min.   :1.000   Min.   :2.0   Min.   : 1.000   Min.   :1.000   Min.   :18.70  
+ 1st Qu.:3.000   1st Qu.:4.0   1st Qu.: 7.000   1st Qu.:2.000   1st Qu.:90.20  
+ Median :4.000   Median :4.0   Median : 8.000   Median :5.000   Median :91.60  
+ Mean   :4.669   Mean   :4.3   Mean   : 7.476   Mean   :4.259   Mean   :90.64  
+ 3rd Qu.:7.000   3rd Qu.:5.0   3rd Qu.: 9.000   3rd Qu.:6.000   3rd Qu.:92.90  
+ Max.   :9.000   Max.   :9.0   Max.   :12.000   Max.   :7.000   Max.   :96.20  
+      DMC              DC             ISI              temp      
+ Min.   :  1.1   Min.   :  7.9   Min.   : 0.000   Min.   : 2.20  
+ 1st Qu.: 68.6   1st Qu.:437.7   1st Qu.: 6.500   1st Qu.:15.50  
+ Median :108.3   Median :664.2   Median : 8.400   Median :19.30  
+ Mean   :110.9   Mean   :547.9   Mean   : 9.022   Mean   :18.89  
+ 3rd Qu.:142.4   3rd Qu.:713.9   3rd Qu.:10.800   3rd Qu.:22.80  
+ Max.   :291.3   Max.   :860.6   Max.   :56.100   Max.   :33.30  
+       RH              wind            rain              area        
+ Min.   : 15.00   Min.   :0.400   Min.   :0.00000   Min.   :   0.00  
+ 1st Qu.: 33.00   1st Qu.:2.700   1st Qu.:0.00000   1st Qu.:   0.00  
+ Median : 42.00   Median :4.000   Median :0.00000   Median :   0.52  
+ Mean   : 44.29   Mean   :4.018   Mean   :0.02166   Mean   :  12.85  
+ 3rd Qu.: 53.00   3rd Qu.:4.900   3rd Qu.:0.00000   3rd Qu.:   6.57  
+ Max.   :100.00   Max.   :9.400   Max.   :6.40000   Max.   :1090.84  
+> 
+> # correlation matrix
+> cor_fire_data <- cor(fire_data)
+> cor_fire_data_sorted <- as.matrix(sort(cor_fire_data[,'area'], decreasing = TRUE))
+> cor_fire_data <- cor_fire_data[rownames(cor_fire_data_sorted), rownames(cor_fire_data_sorted)]
+> corrplot.mixed(cor_fire_data, tl.col="black", tl.pos = "lt", tl.cex = 0.7, cl.cex = .7, number.cex=.7)
+> 
+> #correlation with area
+> cor_fire_data_sorted
+              [,1]
+area   1.000000000
+temp   0.097844107
+DMC    0.072994296
+X      0.063385299
+month  0.056495774
+DC     0.049383225
+Y      0.044873225
+FFMC   0.040122004
+day    0.023226372
+wind   0.012317277
+ISI    0.008257688
+rain  -0.007365729
+RH    -0.075518563
+> 
+> fire_data <- fire_data[fire_data$area < 600,]
+> 
+> #skewness of area
+> skew(fire_data$area)
+[1] 5.704267
+> qqnorm(fire_data$area)
+> qqline(fire_data$area)
+> 
+> ggplot(data=fire_data, aes(x=area)) +
++   geom_histogram(fill="blue", binwidth = 1) +
++   scale_x_continuous(breaks= seq(0, 600, by=100))
+> 
+> #Modelling
+> 
+> my_control <- trainControl(method="cv", number = 3)
+> 
+> rf_fire <-train(area ~., # Standard formula notation
++                          data=fire_data,
++                          method="rf",              # randomForest
++                          nodesize= 10,              # 10 data-points/node. Speeds modeling
++                          ntree =500,               
++                          trControl=my_control  # cross-validation strategy
++                          
++ )
+> 
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1   30 51   20    0
+> 
+> pred_results <- predict(rf_fire,
++                         test,
++                         type = "raw")
+> 
+> pred_results
+       1 
+22.03768 
+> 
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 30 51 20 0 
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> library(kableExtra)
+> library(corrplot)
+corrplot 0.84 loaded
+> library(psych)
+> library(ggplot2)
+
+Attaching package: ‘ggplot2’
+
+The following objects are masked from ‘package:psych’:
+
+    %+%, alpha
+
+> library(randomForest)    
+randomForest 4.6-12
+Type rfNews() to see new features/changes/bug fixes.
+
+Attaching package: ‘randomForest’
+
+The following object is masked from ‘package:ggplot2’:
+
+    margin
+
+The following object is masked from ‘package:psych’:
+
+    outlier
+
+> library(caret)
+Loading required package: lattice
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> #Load Data
+> url <- "http://www.dsi.uminho.pt/~pcortez/forestfires/forestfires.csv"
+> fire_data <- read.csv(url)
+> 
+> #Print head of the data as kable table
+> head(fire_data) %>% kable() %>% kable_styling()
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> X </th>
+   <th style="text-align:right;"> Y </th>
+   <th style="text-align:left;"> month </th>
+   <th style="text-align:left;"> day </th>
+   <th style="text-align:right;"> FFMC </th>
+   <th style="text-align:right;"> DMC </th>
+   <th style="text-align:right;"> DC </th>
+   <th style="text-align:right;"> ISI </th>
+   <th style="text-align:right;"> temp </th>
+   <th style="text-align:right;"> RH </th>
+   <th style="text-align:right;"> wind </th>
+   <th style="text-align:right;"> rain </th>
+   <th style="text-align:right;"> area </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> mar </td>
+   <td style="text-align:left;"> fri </td>
+   <td style="text-align:right;"> 86.2 </td>
+   <td style="text-align:right;"> 26.2 </td>
+   <td style="text-align:right;"> 94.3 </td>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 8.2 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> oct </td>
+   <td style="text-align:left;"> tue </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 35.4 </td>
+   <td style="text-align:right;"> 669.1 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 18.0 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 0.9 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> oct </td>
+   <td style="text-align:left;"> sat </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 43.7 </td>
+   <td style="text-align:right;"> 686.9 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 14.6 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> mar </td>
+   <td style="text-align:left;"> fri </td>
+   <td style="text-align:right;"> 91.7 </td>
+   <td style="text-align:right;"> 33.3 </td>
+   <td style="text-align:right;"> 77.5 </td>
+   <td style="text-align:right;"> 9.0 </td>
+   <td style="text-align:right;"> 8.3 </td>
+   <td style="text-align:right;"> 97 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> mar </td>
+   <td style="text-align:left;"> sun </td>
+   <td style="text-align:right;"> 89.3 </td>
+   <td style="text-align:right;"> 51.3 </td>
+   <td style="text-align:right;"> 102.2 </td>
+   <td style="text-align:right;"> 9.6 </td>
+   <td style="text-align:right;"> 11.4 </td>
+   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> 1.8 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> aug </td>
+   <td style="text-align:left;"> sun </td>
+   <td style="text-align:right;"> 92.3 </td>
+   <td style="text-align:right;"> 85.3 </td>
+   <td style="text-align:right;"> 488.0 </td>
+   <td style="text-align:right;"> 14.7 </td>
+   <td style="text-align:right;"> 22.2 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 5.4 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+> 
+> #Convert month and day to numerical
+> month2Number <- function(x) match(tolower(x), tolower(month.abb))
+> fire_data$month <- month2Number(fire_data$month)
+> 
+> weekday.abb <- c("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+> fire_data$day <- match(fire_data$day, weekday.abb)
+> 
+> #Review data after day and month change
+> head(fire_data) %>% kable() %>% kable_styling()
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> X </th>
+   <th style="text-align:right;"> Y </th>
+   <th style="text-align:right;"> month </th>
+   <th style="text-align:right;"> day </th>
+   <th style="text-align:right;"> FFMC </th>
+   <th style="text-align:right;"> DMC </th>
+   <th style="text-align:right;"> DC </th>
+   <th style="text-align:right;"> ISI </th>
+   <th style="text-align:right;"> temp </th>
+   <th style="text-align:right;"> RH </th>
+   <th style="text-align:right;"> wind </th>
+   <th style="text-align:right;"> rain </th>
+   <th style="text-align:right;"> area </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 86.2 </td>
+   <td style="text-align:right;"> 26.2 </td>
+   <td style="text-align:right;"> 94.3 </td>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 8.2 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 35.4 </td>
+   <td style="text-align:right;"> 669.1 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 18.0 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 0.9 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 43.7 </td>
+   <td style="text-align:right;"> 686.9 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 14.6 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 91.7 </td>
+   <td style="text-align:right;"> 33.3 </td>
+   <td style="text-align:right;"> 77.5 </td>
+   <td style="text-align:right;"> 9.0 </td>
+   <td style="text-align:right;"> 8.3 </td>
+   <td style="text-align:right;"> 97 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 89.3 </td>
+   <td style="text-align:right;"> 51.3 </td>
+   <td style="text-align:right;"> 102.2 </td>
+   <td style="text-align:right;"> 9.6 </td>
+   <td style="text-align:right;"> 11.4 </td>
+   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> 1.8 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 92.3 </td>
+   <td style="text-align:right;"> 85.3 </td>
+   <td style="text-align:right;"> 488.0 </td>
+   <td style="text-align:right;"> 14.7 </td>
+   <td style="text-align:right;"> 22.2 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 5.4 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+> 
+> # double check if any missing values present
+> sapply(fire_data, function(x) sum(is.na(x)))
+    X     Y month   day  FFMC   DMC    DC   ISI  temp    RH  wind  rain  area 
+    0     0     0     0     0     0     0     0     0     0     0     0     0 
+> 
+> #Data summary
+> summary(fire_data)
+       X               Y           month             day             FFMC      
+ Min.   :1.000   Min.   :2.0   Min.   : 1.000   Min.   :1.000   Min.   :18.70  
+ 1st Qu.:3.000   1st Qu.:4.0   1st Qu.: 7.000   1st Qu.:2.000   1st Qu.:90.20  
+ Median :4.000   Median :4.0   Median : 8.000   Median :5.000   Median :91.60  
+ Mean   :4.669   Mean   :4.3   Mean   : 7.476   Mean   :4.259   Mean   :90.64  
+ 3rd Qu.:7.000   3rd Qu.:5.0   3rd Qu.: 9.000   3rd Qu.:6.000   3rd Qu.:92.90  
+ Max.   :9.000   Max.   :9.0   Max.   :12.000   Max.   :7.000   Max.   :96.20  
+      DMC              DC             ISI              temp      
+ Min.   :  1.1   Min.   :  7.9   Min.   : 0.000   Min.   : 2.20  
+ 1st Qu.: 68.6   1st Qu.:437.7   1st Qu.: 6.500   1st Qu.:15.50  
+ Median :108.3   Median :664.2   Median : 8.400   Median :19.30  
+ Mean   :110.9   Mean   :547.9   Mean   : 9.022   Mean   :18.89  
+ 3rd Qu.:142.4   3rd Qu.:713.9   3rd Qu.:10.800   3rd Qu.:22.80  
+ Max.   :291.3   Max.   :860.6   Max.   :56.100   Max.   :33.30  
+       RH              wind            rain              area        
+ Min.   : 15.00   Min.   :0.400   Min.   :0.00000   Min.   :   0.00  
+ 1st Qu.: 33.00   1st Qu.:2.700   1st Qu.:0.00000   1st Qu.:   0.00  
+ Median : 42.00   Median :4.000   Median :0.00000   Median :   0.52  
+ Mean   : 44.29   Mean   :4.018   Mean   :0.02166   Mean   :  12.85  
+ 3rd Qu.: 53.00   3rd Qu.:4.900   3rd Qu.:0.00000   3rd Qu.:   6.57  
+ Max.   :100.00   Max.   :9.400   Max.   :6.40000   Max.   :1090.84  
+> 
+> # correlation matrix
+> cor_fire_data <- cor(fire_data)
+> cor_fire_data_sorted <- as.matrix(sort(cor_fire_data[,'area'], decreasing = TRUE))
+> cor_fire_data <- cor_fire_data[rownames(cor_fire_data_sorted), rownames(cor_fire_data_sorted)]
+> corrplot.mixed(cor_fire_data, tl.col="black", tl.pos = "lt", tl.cex = 0.7, cl.cex = .7, number.cex=.7)
+> 
+> #correlation with area
+> cor_fire_data_sorted
+              [,1]
+area   1.000000000
+temp   0.097844107
+DMC    0.072994296
+X      0.063385299
+month  0.056495774
+DC     0.049383225
+Y      0.044873225
+FFMC   0.040122004
+day    0.023226372
+wind   0.012317277
+ISI    0.008257688
+rain  -0.007365729
+RH    -0.075518563
+> 
+> #fire_data <- fire_data[fire_data$area < 600,]
+> 
+> #skewness of area
+> skew(fire_data$area)
+[1] 12.77248
+> qqnorm(fire_data$area)
+> qqline(fire_data$area)
+> 
+> ggplot(data=fire_data, aes(x=area)) +
++   geom_histogram(fill="blue", binwidth = 1) +
++   scale_x_continuous(breaks= seq(0, 600, by=100))
+> 
+> #Modelling
+> 
+> my_control <- trainControl(method="cv", number = 3)
+> 
+> rf_fire <-train(area ~., # Standard formula notation
++                          data=fire_data,
++                          method="rf",              # randomForest
++                          nodesize= 10,              # 10 data-points/node. Speeds modeling
++                          ntree =500,               
++                          trControl=my_control  # cross-validation strategy
++                          
++ )
+> 
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1   30 51   20    0
+> 
+> pred_results <- predict(rf_fire,
++                         test,
++                         type = "raw")
+> 
+> pred_results
+       1 
+37.51727 
+> 
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 30 51 20 0 1 51 0 10[C[C
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> library(kableExtra)
+> library(corrplot)
+corrplot 0.84 loaded
+> library(psych)
+> library(ggplot2)
+
+Attaching package: ‘ggplot2’
+
+The following objects are masked from ‘package:psych’:
+
+    %+%, alpha
+
+> library(randomForest)    
+randomForest 4.6-12
+Type rfNews() to see new features/changes/bug fixes.
+
+Attaching package: ‘randomForest’
+
+The following object is masked from ‘package:ggplot2’:
+
+    margin
+
+The following object is masked from ‘package:psych’:
+
+    outlier
+
+> library(caret)
+Loading required package: lattice
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> #Load Data
+> url <- "http://www.dsi.uminho.pt/~pcortez/forestfires/forestfires.csv"
+> fire_data <- read.csv(url)
+> 
+> #Print head of the data as kable table
+> head(fire_data) %>% kable() %>% kable_styling()
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> X </th>
+   <th style="text-align:right;"> Y </th>
+   <th style="text-align:left;"> month </th>
+   <th style="text-align:left;"> day </th>
+   <th style="text-align:right;"> FFMC </th>
+   <th style="text-align:right;"> DMC </th>
+   <th style="text-align:right;"> DC </th>
+   <th style="text-align:right;"> ISI </th>
+   <th style="text-align:right;"> temp </th>
+   <th style="text-align:right;"> RH </th>
+   <th style="text-align:right;"> wind </th>
+   <th style="text-align:right;"> rain </th>
+   <th style="text-align:right;"> area </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> mar </td>
+   <td style="text-align:left;"> fri </td>
+   <td style="text-align:right;"> 86.2 </td>
+   <td style="text-align:right;"> 26.2 </td>
+   <td style="text-align:right;"> 94.3 </td>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 8.2 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> oct </td>
+   <td style="text-align:left;"> tue </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 35.4 </td>
+   <td style="text-align:right;"> 669.1 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 18.0 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 0.9 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> oct </td>
+   <td style="text-align:left;"> sat </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 43.7 </td>
+   <td style="text-align:right;"> 686.9 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 14.6 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> mar </td>
+   <td style="text-align:left;"> fri </td>
+   <td style="text-align:right;"> 91.7 </td>
+   <td style="text-align:right;"> 33.3 </td>
+   <td style="text-align:right;"> 77.5 </td>
+   <td style="text-align:right;"> 9.0 </td>
+   <td style="text-align:right;"> 8.3 </td>
+   <td style="text-align:right;"> 97 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> mar </td>
+   <td style="text-align:left;"> sun </td>
+   <td style="text-align:right;"> 89.3 </td>
+   <td style="text-align:right;"> 51.3 </td>
+   <td style="text-align:right;"> 102.2 </td>
+   <td style="text-align:right;"> 9.6 </td>
+   <td style="text-align:right;"> 11.4 </td>
+   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> 1.8 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> aug </td>
+   <td style="text-align:left;"> sun </td>
+   <td style="text-align:right;"> 92.3 </td>
+   <td style="text-align:right;"> 85.3 </td>
+   <td style="text-align:right;"> 488.0 </td>
+   <td style="text-align:right;"> 14.7 </td>
+   <td style="text-align:right;"> 22.2 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 5.4 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+> 
+> #Convert month and day to numerical
+> month2Number <- function(x) match(tolower(x), tolower(month.abb))
+> fire_data$month <- month2Number(fire_data$month)
+> 
+> weekday.abb <- c("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+> fire_data$day <- match(fire_data$day, weekday.abb)
+> 
+> #Review data after day and month change
+> head(fire_data) %>% kable() %>% kable_styling()
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> X </th>
+   <th style="text-align:right;"> Y </th>
+   <th style="text-align:right;"> month </th>
+   <th style="text-align:right;"> day </th>
+   <th style="text-align:right;"> FFMC </th>
+   <th style="text-align:right;"> DMC </th>
+   <th style="text-align:right;"> DC </th>
+   <th style="text-align:right;"> ISI </th>
+   <th style="text-align:right;"> temp </th>
+   <th style="text-align:right;"> RH </th>
+   <th style="text-align:right;"> wind </th>
+   <th style="text-align:right;"> rain </th>
+   <th style="text-align:right;"> area </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 86.2 </td>
+   <td style="text-align:right;"> 26.2 </td>
+   <td style="text-align:right;"> 94.3 </td>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 8.2 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 35.4 </td>
+   <td style="text-align:right;"> 669.1 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 18.0 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 0.9 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 90.6 </td>
+   <td style="text-align:right;"> 43.7 </td>
+   <td style="text-align:right;"> 686.9 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 14.6 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 91.7 </td>
+   <td style="text-align:right;"> 33.3 </td>
+   <td style="text-align:right;"> 77.5 </td>
+   <td style="text-align:right;"> 9.0 </td>
+   <td style="text-align:right;"> 8.3 </td>
+   <td style="text-align:right;"> 97 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 89.3 </td>
+   <td style="text-align:right;"> 51.3 </td>
+   <td style="text-align:right;"> 102.2 </td>
+   <td style="text-align:right;"> 9.6 </td>
+   <td style="text-align:right;"> 11.4 </td>
+   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> 1.8 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 92.3 </td>
+   <td style="text-align:right;"> 85.3 </td>
+   <td style="text-align:right;"> 488.0 </td>
+   <td style="text-align:right;"> 14.7 </td>
+   <td style="text-align:right;"> 22.2 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 5.4 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+> 
+> # double check if any missing values present
+> sapply(fire_data, function(x) sum(is.na(x)))
+    X     Y month   day  FFMC   DMC    DC   ISI  temp    RH  wind  rain  area 
+    0     0     0     0     0     0     0     0     0     0     0     0     0 
+> 
+> #Data summary
+> summary(fire_data)
+       X               Y           month             day             FFMC      
+ Min.   :1.000   Min.   :2.0   Min.   : 1.000   Min.   :1.000   Min.   :18.70  
+ 1st Qu.:3.000   1st Qu.:4.0   1st Qu.: 7.000   1st Qu.:2.000   1st Qu.:90.20  
+ Median :4.000   Median :4.0   Median : 8.000   Median :5.000   Median :91.60  
+ Mean   :4.669   Mean   :4.3   Mean   : 7.476   Mean   :4.259   Mean   :90.64  
+ 3rd Qu.:7.000   3rd Qu.:5.0   3rd Qu.: 9.000   3rd Qu.:6.000   3rd Qu.:92.90  
+ Max.   :9.000   Max.   :9.0   Max.   :12.000   Max.   :7.000   Max.   :96.20  
+      DMC              DC             ISI              temp      
+ Min.   :  1.1   Min.   :  7.9   Min.   : 0.000   Min.   : 2.20  
+ 1st Qu.: 68.6   1st Qu.:437.7   1st Qu.: 6.500   1st Qu.:15.50  
+ Median :108.3   Median :664.2   Median : 8.400   Median :19.30  
+ Mean   :110.9   Mean   :547.9   Mean   : 9.022   Mean   :18.89  
+ 3rd Qu.:142.4   3rd Qu.:713.9   3rd Qu.:10.800   3rd Qu.:22.80  
+ Max.   :291.3   Max.   :860.6   Max.   :56.100   Max.   :33.30  
+       RH              wind            rain              area        
+ Min.   : 15.00   Min.   :0.400   Min.   :0.00000   Min.   :   0.00  
+ 1st Qu.: 33.00   1st Qu.:2.700   1st Qu.:0.00000   1st Qu.:   0.00  
+ Median : 42.00   Median :4.000   Median :0.00000   Median :   0.52  
+ Mean   : 44.29   Mean   :4.018   Mean   :0.02166   Mean   :  12.85  
+ 3rd Qu.: 53.00   3rd Qu.:4.900   3rd Qu.:0.00000   3rd Qu.:   6.57  
+ Max.   :100.00   Max.   :9.400   Max.   :6.40000   Max.   :1090.84  
+> 
+> # correlation matrix
+> cor_fire_data <- cor(fire_data)
+> cor_fire_data_sorted <- as.matrix(sort(cor_fire_data[,'area'], decreasing = TRUE))
+> cor_fire_data <- cor_fire_data[rownames(cor_fire_data_sorted), rownames(cor_fire_data_sorted)]
+> corrplot.mixed(cor_fire_data, tl.col="black", tl.pos = "lt", tl.cex = 0.7, cl.cex = .7, number.cex=.7)
+> 
+> #correlation with area
+> cor_fire_data_sorted
+              [,1]
+area   1.000000000
+temp   0.097844107
+DMC    0.072994296
+X      0.063385299
+month  0.056495774
+DC     0.049383225
+Y      0.044873225
+FFMC   0.040122004
+day    0.023226372
+wind   0.012317277
+ISI    0.008257688
+rain  -0.007365729
+RH    -0.075518563
+> 
+> #fire_data <- fire_data[fire_data$area < 600,]
+> 
+> #skewness of area
+> skew(fire_data$area)
+[1] 12.77248
+> qqnorm(fire_data$area)
+> qqline(fire_data$area)
+> 
+> ggplot(data=fire_data, aes(x=area)) +
++   geom_histogram(fill="blue", binwidth = 1) +
++   scale_x_continuous(breaks= seq(0, 600, by=100))
+> 
+> #Modelling
+> 
+> my_control <- trainControl(method="cv", number = 3)
+> 
+> rf_fire <-train(area ~., # Standard formula notation
++                          data=fire_data,
++                          method="rf",              # randomForest
++                          nodesize= 10,              # 10 data-points/node. Speeds modeling
++                          ntree =500,               
++                          trControl=my_control  # cross-validation strategy
++                          
++ )
+> 
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1    1 51    0  100
+> 
+> pred_results <- predict(rf_fire,
++                         test,
++                         type = "raw")
+> 
+> pred_results
+       1 
+5.025012 
+> 
+sudo shutdown -P +223[A[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m 23[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo shutdown -P +445[A[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R --no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 1 51 0 100 30 51 20 [C[C
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> ## save this model
+> model <- readRDS("fireforest_model.rds")
+> 
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1   30 51   20    0
+> 
+> pred_results <- predict(model,
++                         test,
++                         type = "raw")
+> 
+> pred_results
+       1 
+29.35681 
+> 
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 30 51 20 0 [1P[1@1[C[C[C[C[C[C[C[C[1P[C[C[C0 [1P [1@1
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> ## save this model
+> model <- readRDS("fireforest_model.rds")
+> 
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1   10 51    0   10
+> 
+> pred_results <- predict(model,
++                         test,
++                         type = "raw")
+> 
+> pred_results
+      1 
+3.57449 
+> 
+R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 10 51 0 10 
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> ## load model
+> model <- readRDS("fireforest_model.rds")
+> 
+> #print forest instance
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1   10 51    0   10
+> 
+> #predict
+> pred_result <- predict(model,
++                         test,
++                         type = "raw")
+> #View prediction
+> print("Predicted burned area of new forest fire instance: ", pred_result)
+[1] "Predicted burned area of new forest fire instance: "
+> 
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 10 51 0 10 
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> ## load model
+> model <- readRDS("fireforest_model.rds")
+> 
+> #print forest instance
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1   10 51    0   10
+> 
+> #predict
+> pred_result <- predict(model,
++                         test,
++                         type = "raw")
+> #View prediction
+> print(paste0("Predicted burned area of new forest fire instance: ", pred_result))
+[1] "Predicted burned area of new forest fire instance: 3.24286997936926"
+> 
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 10 51 0 10 [C[C[1@0
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> ## load model
+> model <- readRDS("fireforest_model.rds")
+> 
+> #print forest instance
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1  100 51    0   10
+> 
+> #predict
+> pred_result <- predict(model,
++                         test,
++                         type = "raw")
+> #View prediction
+> print(paste0("Predicted burned area of new forest fire instance: ", pred_result))
+[1] "Predicted burned area of new forest fire instance: 15.5374601391446"
+> 
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 100 51 0 10 [C[1@2[C[C[C[C[1P
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env Rscript
+> args = commandArgs(trailingOnly=TRUE)
+> 
+> test <- x <- data.frame("X" = as.numeric(args[1]), "Y" = as.numeric(args[2]), "month" = as.numeric(args[3]), "day" = as.numeric(args[4]), "FFMC" = as.numeric(args[5]), "DMC" = as.numeric(args[6]), "DC" = as.numeric(args[7]), "ISI" =  as.numeric(args[8]), "temp" = as.numeric(args[9]), "RH" = as.numeric(args[10]), "wind" = as.numeric(args[11]), "rain" = as.numeric(args[12]))
+> 
+> ## load model
+> model <- readRDS("fireforest_model.rds")
+> 
+> #print forest instance
+> test
+  X Y month day FFMC  DMC   DC ISI temp RH wind rain
+1 7 5     3   5 86.2 26.2 94.3 5.1  100 51   20    0
+> 
+> #predict
+> pred_result <- predict(model,
++                         test,
++                         type = "raw")
+> #View prediction
+> print(paste0("Predicted burned area of new forest fire instance: ", pred_result))
+[1] "Predicted burned area of new forest fire instance: 31.9333397763856"
+> 
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m R < ForestFire.R ---no-save --args 7 5 3 5 86.2 26.2 94.3 5.1 100 51 20 0 D[K[KD[K^C
+]0;/home/krogul/Documents/Data Science Projects/R/ForestFire/ForestFire[01;32mkrogul@krogul-Lenovo-G510[01;34m ~/Documents/Data Science Projects/R/ForestFire/ForestFire $[00m 
